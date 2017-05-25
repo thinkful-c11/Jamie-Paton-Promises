@@ -24,6 +24,17 @@ const getArtist = function(name) {
     const id = artist.id;
     return getFromApi(`artists/${id}/related-artists`, query).then(response => {
       artist.related = response.artists;
+      let allArtistID = [];
+      for (let i=0; i<artist.related.length; i++){
+        let artistID = artist.related[i].id;
+        allArtistID.push(getFromApi(`artists/${artistID}/top-tracks?country=US`, query));
+      }
+      const allPromises = Promise.all(allArtistID).then(responses => {
+        for (let i=0; i<allPromises.length; i++){
+          artist.related['tracks'] = responses[i].tracks;
+        }
+      });
+      console.log(allPromises);
       return artist;
     });
   }).catch (err => {
