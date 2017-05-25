@@ -22,6 +22,8 @@ const getArtist = function(name) {
   return getFromApi('search', query).then(response => {
     artist = response.artists.items[0];
     return artist;
+  }).catch (err => {
+    console.error(err);
   });
 };
 
