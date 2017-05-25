@@ -21,9 +21,22 @@ const getArtist = function(name) {
   };
   return getFromApi('search', query).then(response => {
     artist = response.artists.items[0];
-    return artist;
+    const id = artist.id;
+    return getFromApi(`artists/${id}/related-artists`, query).then(response => {
+      artist.related = response.artists;
+      return artist;
+    });
   }).catch (err => {
     console.error(err);
   });
 };
+
+  
+  
+  
+  
+  
+  
+  
+
 
