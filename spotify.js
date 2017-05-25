@@ -11,36 +11,6 @@ const getFromApi = function(endpoint, query={}) {
   });
 };
 
-/*
-
-// Chained Promises
-myFunction().then((data) => {
-    return myOtherFunction(data)
-}).then((response) => {
-    return myThirdFunction(data)
-}).then((whatever) => {
-    console.log(whatever)
-}).then((response) => {
-    return myThirdFunction(data)
-}).then((whatever) => {
-    console.log(whatever)
-})
-
-myFunction().then(data => {
-    return myOtherFunction.then(() => {
-        return myThirdFunction().then(() => {
-            return myOtherFunction.then(() => {
-                
-                return myThirdFunction().then(() => {
-                    console.log(whatefver)
-                })
-            })
-        })
-    })
-})
-
-*/
-
 let artist = null;
 const getArtist = function(name) {
   const query = {
